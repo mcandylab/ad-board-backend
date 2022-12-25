@@ -19,7 +19,7 @@ class AdController extends Controller
 
     public function show(Ad $ad)
     {
-        return response()->json($ad->load('user'));
+        return response()->json($ad->load(['user', 'media']));
     }
 
     /**
