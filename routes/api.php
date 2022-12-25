@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/user', 'user');
         Route::post('/logout', 'logout');
+    });
+
+    Route::controller(AdController::class)->prefix('ads')->group(function () {
+        Route::get('/', 'index');
+        Route::get('/{ad}', 'show');
+        Route::post('/', 'store');
     });
 });
